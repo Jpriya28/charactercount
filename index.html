@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Message Box</h1>
+    <p>Type your message below (200 characters max):</p>
+    <textarea id="messageBox" maxlength="200" placeholder="Type your message..."></textarea>
+    <div id="charCounter">0/200 characters</div>
+    <p id="warningMessage"></p>
+  </div>
+  <script>
+  
+var messageBox = document.getElementById('messageBox');
+var charCounter = document.getElementById('charCounter');
+var warningMessage = document.getElementById('warningMessage');
+
+// Maximum allowed characters
+var maxChars = 200;
+
+// Event listener for real-time input tracking
+messageBox.addEventListener('input', function() {
+  var typedChars = messageBox.value.length; 
+  var remainingChars = maxChars - typedChars; 
+  // Update the character counter
+  charCounter.textContent = `${typedChars}/${maxChars} characters`;
+
+  // Show a warning if the limit is exceeded
+  if (typedChars >= maxChars) {
+    warningMessage.textContent = "Character limit reached!";
+  } else {
+    warningMessage.textContent = ""; 
+  }
+});
+
+ </script>
+
+</body>
+</html>
